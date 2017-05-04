@@ -1,6 +1,12 @@
 var http = require('http');
 var createHandler = require('github-webhook-handler');
 var handler = createHandler({ path: '/webhook', secret: process.env.WEBHOOK_SECRET });
+var exec = require('child_process').exec;
+
+exec('sh startup.sh', function(error, stdout, stderr) {
+  console.log(`stdout: ${stdout}`);
+  console.log(`stderr: ${stderr}`);
+});
 
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
@@ -18,13 +24,13 @@ handler.on('push', function (event) {
     event.payload.repository.name,
     event.payload.ref);
   if (event.payload.ref == 'refs/heads/master') {
-    require('child_process').exec('sh /home/administrator/master/master-deploy.sh', function(error, stdout, stderr) {
+    exec('sh /home/administrator/master/master-deploy.sh', function(error, stdout, stderr) {
       console.log(`stdout: ${stdout}`);
       console.log(`stderr: ${stderr}`);
     });
   }
   else if (event.payload.ref == 'refs/heads/develop') {
-    require('child_process').exec('sh /home/administrator/develop/develop-deploy.sh', function(error, stdout, stderr) {
+    exec('sh /home/administrator/develop/develop-deploy.sh', function(error, stdout, stderr) {
       console.log(`stdout: ${stdout}`);
       console.log(`stderr: ${stderr}`);
     });
