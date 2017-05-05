@@ -10,21 +10,21 @@ var runSh = function(str){
   });
 }
 
-var runStartup = function() {
-  runSh('sh startup.sh');
-}
+exec('sh startup.sh', function(error, stdout, stderr) {
+  console.log(`stdout: ${stdout}`);
+  console.log(`stderr: ${stderr}`);
 
-var runMasterDeploy = function() {
-  runSh('sh /home/administrator/master/master-deploy.sh');
-}
+  exec('sh /home/administrator/master/master-deploy.sh', function(error, stdout, stderr) {
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
 
-var runDevelopDeploy = function() {
-  runSh('sh /home/administrator/develop/develop-deploy.sh')
-}
+    exec('sh /home/administrator/develop/develop-deploy.sh', function(error, stdout, stderr) {
+      console.log(`stdout: ${stdout}`);
+      console.log(`stderr: ${stderr}`);
+    });
+  });
+});
 
-runStartup();
-runMasterDeploy();
-runDevelopDeploy();
 
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
@@ -42,9 +42,9 @@ handler.on('push', function (event) {
     event.payload.repository.name,
     event.payload.ref);
   if (event.payload.ref == 'refs/heads/master') {
-    runMasterDeploy();
+    runSh('sh /home/administrator/master/master-deploy.sh');
   }
   else if (event.payload.ref == 'refs/heads/develop') {
-    runDevelopDeploy();
+    runSh('sh /home/administrator/develop/develop-deploy.sh');
   }
 });
