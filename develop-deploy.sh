@@ -2,17 +2,17 @@
 
 cd "/home/administrator/develop"
 
-docker-compose -f develop-docker-compose.yml down
+git checkout develop
 
-cd ..
+git stash save --keep-index
 
-rm -rf develop
+git clean -df
 
-git clone --branch develop https://github.com/jachicao/IIC3103.git develop
-
-cd develop
+git pull
 
 docker-compose -f develop-docker-compose.yml build
+
+docker-compose -f develop-docker-compose.yml down
 
 docker-compose -f develop-docker-compose.yml up -d --remove-orphans
 
