@@ -14,11 +14,11 @@ exec('sh startup.sh', function(error, stdout, stderr) {
   console.log(`stdout: ${stdout}`);
   console.log(`stderr: ${stderr}`);
 
-  exec('sh /home/administrator/master/master-deploy.sh', function(error, stdout, stderr) {
+  exec('sh master-deploy.sh', function(error, stdout, stderr) {
     console.log(`stdout: ${stdout}`);
     console.log(`stderr: ${stderr}`);
 
-    exec('sh /home/administrator/develop/develop-deploy.sh', function(error, stdout, stderr) {
+    exec('sh develop-deploy.sh', function(error, stdout, stderr) {
       console.log(`stdout: ${stdout}`);
       console.log(`stderr: ${stderr}`);
     });
