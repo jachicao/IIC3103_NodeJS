@@ -42,9 +42,9 @@ handler.on('push', function (event) {
     event.payload.repository.name,
     event.payload.ref);
   if (event.payload.ref == 'refs/heads/master') {
-    runSh('sh /home/administrator/master/master-deploy.sh');
+    runSh('sh master-deploy.sh');
   }
   else if (event.payload.ref == 'refs/heads/develop') {
-    runSh('sh /home/administrator/develop/develop-deploy.sh');
+    runSh('sh develop-deploy.sh');
   }
 });
