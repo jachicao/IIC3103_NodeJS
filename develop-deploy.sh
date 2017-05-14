@@ -22,4 +22,8 @@ docker-compose -f develop-docker-compose.yml exec develop-web rake db:migrate
 
 docker-compose -f develop-docker-compose.yml exec develop-web rake db:seed
 
+docker-compose -f develop-docker-compose.yml down
+
+docker-compose -f develop-docker-compose.yml up -d --remove-orphans
+
 exit 0
