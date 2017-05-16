@@ -2,6 +2,10 @@
 
 cd "/home/administrator/master"
 
+git stash save --keep-index
+
+git clean -df
+
 git checkout master
 
 git pull

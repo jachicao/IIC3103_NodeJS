@@ -2,6 +2,10 @@
 
 cd "/home/administrator/develop"
 
+git stash save --keep-index
+
+git clean -df
+
 git checkout develop
 
 git pull
