@@ -2,13 +2,11 @@
 
 cd "/home/administrator/develop"
 
-git stash save --keep-index
-
-git clean -df
-
 git checkout develop
 
-git pull
+git fetch --all
+
+git reset --hard origin/develop
 
 docker-compose -f develop-docker-compose.yml build
 

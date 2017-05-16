@@ -2,13 +2,11 @@
 
 cd "/home/administrator/master"
 
-git stash save --keep-index
-
-git clean -df
-
 git checkout master
 
-git pull
+git fetch --all
+
+git reset --hard origin/master
 
 docker-compose -f master-docker-compose.yml build
 
