@@ -22,4 +22,6 @@ docker-compose -f master-docker-compose.yml up -d --remove-orphans
 
 docker-compose -f master-docker-compose.yml exec web bundle exec sidekiq -C config/sidekiq.yml -d
 
+docker-compose -f master-docker-compose.yml exec web whenever --set environment=production --update-crontab
+
 exit 0
