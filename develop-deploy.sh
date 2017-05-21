@@ -14,6 +14,8 @@ docker-compose -f develop-docker-compose.yml down
 
 docker-compose -f develop-docker-compose.yml up -d --remove-orphans
 
+sleep 5s
+
 docker-compose -f develop-docker-compose.yml exec develop-web rake db:create
 
 docker-compose -f develop-docker-compose.yml exec develop-web rake db:migrate
