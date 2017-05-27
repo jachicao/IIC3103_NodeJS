@@ -24,6 +24,4 @@ docker-compose -f develop-docker-compose.yml exec develop-web rake db:migrate
 
 docker-compose -f develop-docker-compose.yml exec develop-web bundle exec sidekiq -C config/sidekiq.yml -d
 
-docker-compose -f develop-docker-compose.yml exec develop-web whenever --set environment=development --update-crontab
-
 exit 0
