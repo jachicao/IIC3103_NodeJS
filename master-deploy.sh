@@ -8,7 +8,8 @@ git fetch --all
 
 git reset --hard origin/master
 
-rm -rf log
+rm log/production.log
+rm log/sidekiq.log
 
 docker system prune -f
 
