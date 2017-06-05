@@ -27,6 +27,8 @@ docker-compose -f develop-docker-compose.yml exec develop-web rails db:migrate
 
 #docker-compose -f develop-docker-compose.yml exec develop-web rails db:seed
 
+sleep 5s
+
 docker-compose -f develop-docker-compose.yml exec develop-web bundle exec sidekiq -C config/sidekiq.yml -d
 
 exit 0
