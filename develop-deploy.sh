@@ -15,8 +15,6 @@ docker system prune -f
 
 docker-compose -f develop-docker-compose.yml build
 
-docker-compose -f develop-docker-compose.yml down
-
 docker-compose -f develop-docker-compose.yml up -d --remove-orphans
 
 sleep 5s
