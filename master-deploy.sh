@@ -29,4 +29,6 @@ sleep 5s
 
 docker-compose -f master-docker-compose.yml exec web bundle exec sidekiq -C config/sidekiq.yml -d
 
+docker-compose -f master-docker-compose.yml exec web rake sneakers:run
+
 exit 0
