@@ -29,6 +29,4 @@ sleep 5s
 
 docker-compose -f develop-docker-compose.yml exec develop-web bundle exec sidekiq -C config/sidekiq.yml -d
 
-docker-compose -f develop-docker-compose.yml exec develop-web rake sneakers:run
-
 exit 0
