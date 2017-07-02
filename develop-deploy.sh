@@ -11,8 +11,6 @@ git reset --hard origin/develop
 rm log/development.log
 rm log/sidekiq.log
 
-docker system prune -f
-
 docker-compose -f develop-docker-compose.yml build
 
 docker-compose -f develop-docker-compose.yml up -d --remove-orphans
@@ -28,5 +26,7 @@ docker-compose -f develop-docker-compose.yml exec develop-web rails db:migrate
 sleep 5s
 
 docker-compose -f develop-docker-compose.yml exec develop-web bundle exec sidekiq -C config/sidekiq.yml -d
+
+docker system prune -f
 
 exit 0
