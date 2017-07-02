@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 cd "/home/administrator/master"
 
@@ -11,6 +10,8 @@ git reset --hard origin/master
 
 rm log/production.log
 rm log/sidekiq.log
+
+set -e
 
 docker-compose -f master-docker-compose.yml build
 

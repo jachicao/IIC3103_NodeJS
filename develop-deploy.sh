@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 cd "/home/administrator/develop"
 
@@ -11,6 +10,8 @@ git reset --hard origin/develop
 
 rm log/development.log
 rm log/sidekiq.log
+
+set -e
 
 docker-compose -f develop-docker-compose.yml build
 
